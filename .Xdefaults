@@ -1,0 +1,55 @@
+!urxvt*font:             xft:Dina:pixelsize=11
+!urxvt*font:             xft:Termsyn7x14r:pixelsize=11
+!urxvt*font:             xft:Tamzen10x20r:pixelsize=11
+urxvt*font:             xft:SourceCodePro:pixelsize=14
+!urxvt*font:             xft:MonteCarloMedium:pixelsize=11
+urxvt.letterSpace:  0
+urxvt*scrollBar:        false
+urxvt*scrollBar_right:  false
+urxvt*foreground:       #8B7B8B
+urxvt*background:       black
+urxvt*borderless:       1
+urxvt.perl-ext:      default,url-select
+urxvt.keysym.M-u:    perl:url-select:select_next
+urxvt.url-select.launcher:   /usr/bin/dwb
+urxvt.url-select.underline: true
+urxvt*termName: rxvt-256color
+!urxvt*.transparent: true
+! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
+!urxvt*.shading: 101
+
+
+shoot*font:             xft:Tamzen10x20r:pixelsize=11
+shoot*scrollBar:        false
+shoot*scrollBar_right:  false
+shoot*foreground:       #8B7B8B
+shoot*background:       black
+shoot*borderless:       1
+
+!*background:  #CFCFD9
+!*foreground:  #1C2027
+
+! black
+*color0:  #777777
+*color8:  #777777
+! red
+*color1:  #3f0a0a
+*color9:  #681111
+! green
+*color2:  #174518
+*color10: #3fbe43
+! yellow
+*color3:  #3d2f14
+*color11: #a27d36
+! blue
+*color4:  #002d44
+*color12: #0084cd
+! magenta
+*color5:  #56146f
+*color13: #5f349d
+! cyan
+*color6:  #258F8F
+*color14: #60C6C8
+! white
+*color7:  #77858C
+*color15: #c0c0c0
