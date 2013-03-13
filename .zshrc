@@ -99,3 +99,4 @@ if [[ -n "$DISPLAY" ]]; then
     xrdb ~/.Xdefaults
 fi
 
+export EDITOR="vim"

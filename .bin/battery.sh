@@ -1,9 +1,3 @@
-#!/bin/sh
+#!/bin/bash
 
-#list battery, sub all non-numbers for nothing, split the string at whitespaces and grep the one with %
-
-battery=$( acpi -b | tr " " "\n" | grep % | awk '{ gsub(/,/,"")}1' )
-
-echo B: $battery
-
-exit 0
+python2 /home/h/.bin/battery.py

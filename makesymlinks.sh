@@ -7,7 +7,7 @@
 ########## Variables
 
 dir=~/dots                    # dotfiles directory
-files=".bashrc .vimrc .zshrc .xmonad/xmonad.hs .config/dwb/settings .xmobarrc"    # list of files/folders to symlink in homedir
+files=".bashrc .vimrc .zshrc .xmonad/xmonad.hs .config/dwb/settings .xmobarrc .xinitrc .bin"    # list of files/folders to symlink in homedir
 
 ##########
 
