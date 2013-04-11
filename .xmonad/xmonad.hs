@@ -65,6 +65,7 @@ main = do
         , layoutHook = myLayoutHook
         , logHook = dynamicLogWithPP $ xmobarPP
                         { ppOutput = hPutStrLn xmproc
+                        , ppOrder               = \(ws:l:t:_)   -> [ws]
                         , ppTitle               = xmobarColor   "#5f349d" "" . shorten 50
                         , ppCurrent             = xmobarColor   "#5f349d" "" . shorten 50
                         }

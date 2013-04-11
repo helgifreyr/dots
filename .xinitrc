@@ -1,5 +1,6 @@
 xrdb ~/.Xdefaults
 sh ~/.fehbg &
+xmodmap ~/.xmodmap
 mpd &
 xsetroot -cursor_name left_ptr
 setxkbmap -layout is

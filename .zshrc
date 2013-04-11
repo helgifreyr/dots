@@ -97,6 +97,7 @@ alias nai='rsync -alhz --stats --progress kerr:/home/h/skoli/ /home/h/skoli/'
 if [[ -n "$DISPLAY" ]]; then
     feh --bg-max ~/pictures/wallpaper/starry-night.png
     xrdb ~/.Xdefaults
+    xmodmap .xmodmap
 fi
 
 export EDITOR="vim"
