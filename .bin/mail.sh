@@ -1,7 +1,7 @@
 #!/bin/sh
  
 gmail_login="helgi.runarsson"
-gmail_password="8piG/c^4g"
+gmail_password=$1
  
 dane=`curl -su ${gmail_login}:${gmail_password} https://mail.google.com/mail/feed/atom | grep 'fullcount' | sed -r 's|.*>(.*)</.*|\1|'`
 
