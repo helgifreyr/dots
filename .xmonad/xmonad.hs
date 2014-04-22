@@ -21,6 +21,7 @@ import XMonad.Layout.Spacing
 import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Gaps
 
+
 import Data.Ratio
 import XMonad.Layout.LayoutHints
 import XMonad.Actions.UpdatePointer
@@ -28,6 +29,7 @@ import XMonad.Actions.CopyWindow
 import qualified XMonad.StackSet as W
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.FloatNext
+import XMonad.Hooks.ManageHelpers
 
 
 import System.IO
@@ -40,35 +42,39 @@ myManageHook = composeAll
     [ title     =? "shoot"  --> doFloat
     , className =? "Steam"  --> doCenterFloat
     , className =? "mplayer2"  --> doCenterFloat
+--    , className =? "mpv"  --> doCenterFloat
     , className =? "feh"  --> doFloat
     , className =? "Gnuplot"  --> doFloat
+    , className =? "Hangouts"  --> doFloat
+    , title     =? "floatingTerminal" --> doFloat
     , manageDocks
     ]
 
+-- myWorkspaces = ["code","web","latex","pdf","term","irssi","mathematica","storage"]
+
 myLayoutHook             =  avoidStruts $ smartBorders $ layout
-  where layout           = code ||| grid ||| tiled ||| full
+  where layout           = code ||| latex ||| tiled ||| full
         full             = named "full" $ Full
         grid             = named "grid" $ Grid
---        big              = named "big" $ OneBig (3/4) (3/4)
---        mbig             = named "mbig" $ Mirror big
-        tiled            = named "tiled" $ Tall 1 (3/100) (1/2)
---        mtiled           = named "mtiled" $ Mirror tiled
+        tiled            = named "tall" $ Tall 1 (3/100) (1/2)
         code             = named "code" $ limitWindows 2 $ magnifiercz' 2.67 $ smartBorders $ Tall 1 (3/100) (3/4)
-
+        latex            = named "latex" $ limitWindows 3 $ magnifiercz' 1.4 $ FixedColumn 1 20 120 10
 
 main = do
     xmproc <- spawnPipe "xmobar"  -- start xmobar
---    xmproc <- spawnPipe "xmobar /home/helgi/.xmobarrc2"  -- start xmobar
     xmonad $ defaultConfig
         { manageHook = manageDocks <+> myManageHook -- make sure to include myManageHook definition from above
                         <+> manageHook defaultConfig
         , layoutHook = myLayoutHook
         , logHook = dynamicLogWithPP $ xmobarPP
                         { ppOutput = hPutStrLn xmproc
-                        , ppOrder               = \(ws:l:t:_)   -> [ws]
+                        , ppOrder               = \(ws:l:t:_)   -> [ws,l]
                         , ppTitle               = xmobarColor   "#5f349d" "" . shorten 50
                         , ppCurrent             = xmobarColor   "#5f349d" "" . shorten 50
+                        , ppLayout              = xmobarColor   "#5f349d" "" . shorten 50
+                        , ppSep                 = "<fc=#71637d> | </fc>"
                         }
+        -- , workspaces = myWorkspaces
         , modMask = mod4Mask     -- Rebind Mod to the Windows key
 	      , normalBorderColor  = "#25143e"
 	      , focusedBorderColor = "#5f349d"
@@ -79,6 +85,7 @@ main = do
         , ((0, xK_F9), spawn "amixer set Master 0% &gt; /dev/null")
         , ((0, xK_F12), spawn "amixer set Master 100% &gt; /dev/null")
         , ((0, xK_Print), spawn "urxvt -name shoot -geometry 30x2+700+550 -e shoot")
+        , ((mod4Mask, xK_m), spawn "urxvt -name floatingTerminal -geometry 50x8+700+550")
         , ((mod4Mask, xK_F4), spawn "dmenu-mpd -a")
         , ((mod4Mask, xK_F3), spawn "dmenu-mpd -l")
         , ((mod4Mask, xK_F2), spawn "dmenu-mpd -j")

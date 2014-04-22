@@ -1,13 +1,10 @@
 #!/bin/sh
  
 gmail_login="helgi.runarsson"
-gmail_password="i1se5b28g"
+gmail_password="8piG/c^4g"
  
-dane="$(wget --secure-protocol=TLSv1 --timeout=3 -t 1 -q -O - \
-https://${gmail_login}:${gmail_password}@mail.google.com/mail/feed/atom \
---no-check-certificate | grep 'fullcount' \
-| sed -e 's/.*<fullcount>//;s/<\/fullcount>.*//' 2>/dev/null)"
- 
+dane=`curl -su ${gmail_login}:${gmail_password} https://mail.google.com/mail/feed/atom | grep 'fullcount' | sed -r 's|.*>(.*)</.*|\1|'`
+
 if [ -z "$dane" ]; then
   echo "<fc=#25143e>G:</fc>"
 else

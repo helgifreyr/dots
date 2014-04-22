@@ -88,11 +88,14 @@ alias rm='rm -Iv'
 alias cp='cp -iv'
 
 alias maple='/home/h/.maple14/bin/maple'
+alias mathematica='/home/h/.mathematica/Executables/mathematica'
 
 alias python=/usr/bin/python2
 
 alias senda='rsync -alhz --stats --progress /home/h/skoli/ kerr:/home/h/skoli/'
 alias nai='rsync -alhz --stats --progress kerr:/home/h/skoli/ /home/h/skoli/'
+
+alias eduroam='sudo pkill wpa_supplicant && sudo wpa_supplicant -Dwext -iwlp3s0 -c /etc/wpa_supplicant/wpa_supplicant.conf && sudo dhcpd wlp3s0 &'
 
 if [[ -n "$DISPLAY" ]]; then
     feh --bg-max ~/pictures/wallpaper/starry-night.png
