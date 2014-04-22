@@ -6,7 +6,7 @@ Config { font = "xft:SourceCodePro-10"
        , commands = [ Run Network "wlp3s0" ["-L","0","-H","32","--normal","#25143e","--high","#5f349d"] 10
                     , Run Network "eth0" ["-L","0","-H","32","--normal","#25143e","--high","#5f349d"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
-                    , Run Com "/home/h/.bin/mail.sh user password" [] "mail" 300
+                    , Run Com "/home/h/.bin/mail.sh" [] "mail" 300
                     , Run Date "%d/%m %H:%M" "date" 10
                     , Run Battery ["-t","<left>% / <timeleft>","-L","50","-H","75","-h","#25143e","-n","yell","-l","#5f349d"] 10
                     , Run StdinReader
