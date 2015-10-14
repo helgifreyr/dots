@@ -1,8 +1,9 @@
-Config { font = "xft:SourceCodePro-10"
+Config { font = "xft:Monospace-11"
        , bgColor = "black"
        , fgColor = "grey"
        , position = Bottom
-       , lowerOnStart = True
+       , lowerOnStart = False
+       , alpha = 127
        , commands = [ Run Network "wlp3s0" ["-L","0","-H","32","--normal","#25143e","--high","#5f349d"] 10
                     , Run Network "eth0" ["-L","0","-H","32","--normal","#25143e","--high","#5f349d"] 10
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
@@ -17,5 +18,5 @@ Config { font = "xft:SourceCodePro-10"
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = "<fc=#25143e>%StdinReader%</fc> <fc=#8B7B8B>|</fc> <fc=#25143e>%wifi% <fc=#8B7B8B>|</fc> %wlp3s0%</fc> <fc=#8B7B8B>|</fc> %vol% <fc=#8B7B8B>|</fc> %mail% }{ <fc=#25143e>%battery%</fc> <fc=#8b7b8b>|</fc>  %mpc% <fc=#8B7B8B>|</fc> <fc=#5f349d>%date%</fc>"
+       , template = "<fc=#25143e>%StdinReader%</fc> <fc=#8B7B8B>|</fc> <fc=#25143e>%wifi% <fc=#8B7B8B>|</fc> %wlp3s0%</fc> <fc=#8B7B8B>|</fc> %vol% }{ <fc=#25143e>%battery%</fc> <fc=#8b7b8b>|</fc>  %mpc% <fc=#8B7B8B>|</fc> <fc=#5f349d>%date%</fc>"
        }

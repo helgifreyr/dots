@@ -1,3 +1,9 @@
+if [[ -z "$DISPLAY" ]] && [[ $(tty) = /dev/tty1 ]]; then
+    startx &
+#    xflux -l 59.283 -g 18.05
+    logout
+fi
+
 # The following lines were added by compinstall
 
 zstyle ':completion:*' completer _complete _ignored
@@ -20,6 +26,9 @@ setopt completealiases
 
 [ -r /usr/share/doc/pkgfile/command-not-found.zsh ] && . /usr/share/doc/pkgfile/command-not-found.zsh
 
+PS1='[\u@\h \W]\$ '
+eval $(dircolors ~/.dircolors)
+
 autoload -U colors && colors
 PROMPT="%{$fg_bold[magenta]%}%1~/ %{$reset_color%}"
 RPROMPT="%{$fg_no_bold[blue]%}[%{$reset_color%}%{$fg_bold[magenta]%}%n%{$reset_color%}%{$fg_no_bold[blue]%}@%{$reset_color%}%{$fg_no_bold[magenta]%}%M%{$reset_color%}%{$fg_no_bold[blue]%}]%{$reset_color%}"
@@ -36,6 +45,11 @@ zle-keymap-select() {
   fi
 }
 zle -N zle-keymap-select
+
+if [[ $TERM == xterm-256color ]]; then
+    . /etc/profile.d/vte.sh
+    __vte_osc7
+fi
 
 
 # create a zkbd compatible hash;
@@ -87,20 +101,40 @@ alias mv='mv -iv'
 alias rm='rm -Iv'
 alias cp='cp -iv'
 
+alias du='cdu -idh'
+alias df='dfc -s'
+
+alias cl='clear'
+
+alias ccat='pygmentize -g'
+
 alias maple='/home/h/.maple14/bin/maple'
-alias mathematica='/home/h/.mathematica/Executables/mathematica'
+# alias mathematica='/home/h/.mathematica/Executables/mathematica'
 
 alias python=/usr/bin/python2
+alias f2py=/usr/bin/f2py2
 
-alias senda='rsync -alhz --stats --progress /home/h/skoli/ kerr:/home/h/skoli/'
-alias nai='rsync -alhz --stats --progress kerr:/home/h/skoli/ /home/h/skoli/'
+alias ff++=/usr/bin/FreeFem++
 
+# alias vless='vim -u  /usr/share/vim/vim74/macros/less.vim'
 alias eduroam='sudo pkill wpa_supplicant && sudo wpa_supplicant -Dwext -iwlp3s0 -c /etc/wpa_supplicant/wpa_supplicant.conf && sudo dhcpd wlp3s0 &'
 
 if [[ -n "$DISPLAY" ]]; then
-    feh --bg-max ~/pictures/wallpaper/starry-night.png
+    feh --bg-max ~/pictures/wallpaper/wBKmC1u.jpg
     xrdb ~/.Xdefaults
     xmodmap .xmodmap
 fi
 
 export EDITOR="vim"
+export BROWSER="firefox"
+# export TERM="xterm-256color"
+#
+export LESS='-R'
+export LESSOPEN='|~/.lessfilter %s'
+
+export HOME_LORENE=/home/h/Lorene
+export HOME_KADATH=/home/h/Kadath
+export HDF5INCLUDEDIR="/usr/include"
+export HDF5LIBDIR="/usr/lib"
+export PATH=$PATH:/home/h/.lib/python 
+export PYTHONPATH="$PYTHONPATH:/home/h/.lib/python"

@@ -4,6 +4,7 @@
 #    logout
 #fi
 # If not running interactively, don't do anything
+# sfkajsfas
 [ -z "$PS1" ] && return
 
 # enable color support of ls and also add handy aliases

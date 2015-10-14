@@ -1,0 +1,12 @@
+#!/bin/sh
+
+sketch -T $1.sk -o $1.tex
+latex --extra-mem-top=5000000 $1.tex
+dvipdf $1.dvi
+pdfcrop $1.pdf
+mv $1-crop.pdf done-$1.pdf
+mv $1.sk done-$1.sk
+rm $1*
+mv done-$1.pdf $1.pdf
+mv done-$1.sk $1.sk
+

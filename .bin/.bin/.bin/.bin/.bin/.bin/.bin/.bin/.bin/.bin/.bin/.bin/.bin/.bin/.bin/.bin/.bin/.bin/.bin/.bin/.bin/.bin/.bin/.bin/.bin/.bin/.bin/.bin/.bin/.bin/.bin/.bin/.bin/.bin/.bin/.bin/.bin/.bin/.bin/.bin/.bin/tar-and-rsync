@@ -1,0 +1,10 @@
+# date=`date "+%Y-%m-%dT%H.%M.%S"`
+date=`date "+%Y-%m-%d"`
+
+# tar cvf $1.tar $1 | pigz -$3 --rsyncable > $1-$date.tar.gz
+GZIP='--rsyncable' tar cvzf $1-$date.tar.gz $1
+
+# rsync -vhP --append $1-$date.tar.gz $2
+# rm $1-$date.tar.gz
+rsync -vhP --append $1-$date.tar.gz $2
+rm $1-$date.tar.gz

@@ -1,0 +1,21 @@
+#!/bin/sh
+
+for f in *.tex; do
+    latex $f;
+done
+for f in *.mp;  do
+    mpost $f;
+done
+for f in *.tex; do
+    latex $f;
+done
+
+for f in *.dvi; do
+    dvips -E $f -o;
+    rm $f;
+done
+
+for f in *.ps; do
+    epstopdf $f;
+    rm $f;
+done

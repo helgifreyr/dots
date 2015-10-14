@@ -1,0 +1,1 @@
+ffmpeg -i $1 -s 320x240 -acodec libmp3lame -vcodec mpeg4 -vtag XVID -b 500k -ab 320k $2

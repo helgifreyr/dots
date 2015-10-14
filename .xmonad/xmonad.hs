@@ -13,13 +13,13 @@ import XMonad.Layout.Circle
 import XMonad.Layout.Magnifier
 import XMonad.Layout.NoBorders
 import XMonad.Layout.Named
-import XMonad.Layout.OneBig
 import XMonad.Layout.Grid
 import XMonad.Layout.LimitWindows
 import XMonad.Layout.FixedColumn
 import XMonad.Layout.Spacing  
 import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Gaps
+import XMonad.Layout.PerWorkspace
 
 
 import Data.Ratio
@@ -42,23 +42,28 @@ myManageHook = composeAll
     [ title     =? "shoot"  --> doFloat
     , className =? "Steam"  --> doCenterFloat
     , className =? "mplayer2"  --> doCenterFloat
---    , className =? "mpv"  --> doCenterFloat
+    , className =? "mpv"  --> doCenterFloat
     , className =? "feh"  --> doFloat
+    , className =? "GV"  --> doFloat
     , className =? "Gnuplot"  --> doFloat
     , className =? "Hangouts"  --> doFloat
-    , title     =? "floatingTerminal" --> doFloat
+    , title     =? "smallTerm" --> doFloat
+    , title     =? "ncmpcpp" --> doFloat
     , manageDocks
     ]
 
 -- myWorkspaces = ["code","web","latex","pdf","term","irssi","mathematica","storage"]
 
-myLayoutHook             =  avoidStruts $ smartBorders $ layout
-  where layout           = code ||| latex ||| tiled ||| full
+myLayoutHook             =  avoidStruts $ smartBorders
+                            $ onWorkspace "2" ( full ||| tiled )
+                            $ ( tiled ||| full ||| latex ||| grid ||| mgrid )
+  where
         full             = named "full" $ Full
         grid             = named "grid" $ Grid
+        mgrid             = named "mgrid" $ Mirror (Grid)
         tiled            = named "tall" $ Tall 1 (3/100) (1/2)
-        code             = named "code" $ limitWindows 2 $ magnifiercz' 2.67 $ smartBorders $ Tall 1 (3/100) (3/4)
-        latex            = named "latex" $ limitWindows 3 $ magnifiercz' 1.4 $ FixedColumn 1 20 120 10
+        -- code             = named "code" $ limitWindows 2 $ magnifiercz' 2.67 $ smartBorders $ Tall 1 (3/100) (3/4)
+        latex            = named "latex" $ limitWindows 3 $ magnifiercz' 1.4 $ FixedColumn 1 20 100 10
 
 main = do
     xmproc <- spawnPipe "xmobar"  -- start xmobar
@@ -80,12 +85,9 @@ main = do
 	      , focusedBorderColor = "#5f349d"
     	  , terminal = "urxvt"
         } `additionalKeys`
-        [ ((0, xK_F10), spawn "amixer set Master 10%- &gt; /dev/null")
-        , ((0, xK_F11), spawn "amixer set Master 10%+ &gt; /dev/null")
-        , ((0, xK_F9), spawn "amixer set Master 0% &gt; /dev/null")
-        , ((0, xK_F12), spawn "amixer set Master 100% &gt; /dev/null")
-        , ((0, xK_Print), spawn "urxvt -name shoot -geometry 30x2+700+550 -e shoot")
-        , ((mod4Mask, xK_m), spawn "urxvt -name floatingTerminal -geometry 50x8+700+550")
+        [ ((0, xK_Print), spawn "urxvt -name shoot -geometry 28x1+700+550 -e shoot")
+        , ((mod4Mask, xK_m), spawn "urxvt -name smallTerm -geometry 50x8+700+450")
+        , ((mod4Mask, xK_n), spawn "urxvt -name ncmpcpp -geometry 80x20+600+450 -e ncmpcpp")
         , ((mod4Mask, xK_F4), spawn "dmenu-mpd -a")
         , ((mod4Mask, xK_F3), spawn "dmenu-mpd -l")
         , ((mod4Mask, xK_F2), spawn "dmenu-mpd -j")

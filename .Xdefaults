@@ -1,55 +1,84 @@
-!urxvt*font:             xft:Dina:pixelsize=11
-!urxvt*font:             xft:Termsyn7x14r:pixelsize=11
-!urxvt*font:             xft:Tamzen10x20r:pixelsize=11
-urxvt*font:             xft:SourceCodePro:pixelsize=14
-!urxvt*font:             xft:MonteCarloMedium:pixelsize=11
-urxvt.letterSpace:  0
-urxvt*scrollBar:        false
-urxvt*scrollBar_right:  false
-urxvt*foreground:       #8B7B8B
-urxvt*background:       black
-urxvt*borderless:       1
-urxvt.perl-ext:      default,url-select
-urxvt.keysym.M-u:    perl:url-select:select_next
-urxvt.url-select.launcher:   /usr/bin/dwb
-urxvt.url-select.underline: true
-urxvt*termName: rxvt-256color
-!urxvt*.transparent: true
+*font:     xft:bitstream vera sans mono:size=9:antialias=true
+*boldFont: xft:bitstream vera sans mono:bold:size=9:antialias=true
+*letterSpace:  0
+*scrollBar:        false
+*scrollBar_right:  false
+*borderless:       1
+*perl-ext:      default,url-select
+*keysym.M-u:    perl:url-select:select_next
+*url-select.launcher:   /usr/bin/firefox
+*url-select.underline: true
+*termName: rxvt-256color
+urxvt*transparent: true
 ! URxvt*.shading: 0 to 99 darkens, 101 to 200 lightens
-!urxvt*.shading: 101
+urxvt*shading: 50
 
+urxvt.keysym.C-0: command:\033]710;xft:bitstream vera sans mono:size=9:antialias=true\007
+urxvt.keysym.C-minus: command:\033]710;xft:bitstream vera sans mono:size=7:antialias=true\007
+urxvt.keysym.C-plus: command:\033]710;xft:bitstream vera sans mono:size=11:antialias=true\007
 
-shoot*font:             xft:Tamzen10x20r:pixelsize=11
-shoot*scrollBar:        false
-shoot*scrollBar_right:  false
-shoot*foreground:       #8B7B8B
-shoot*background:       black
-shoot*borderless:       1
+urxvt*background:  #0f0f0f
+urxvt*foreground:  #dcdccc
+shoot*background:  #0f0f0f
+shoot*foreground:  #dcdccc
+smallTerm*background:  #0f0f0f
+smallTerm*foreground:  #dcdccc
+ncmpcpp*background:  #0f0f0f
+ncmpcpp*foreground:  #dcdccc
 
-!*background:  #CFCFD9
-!*foreground:  #1C2027
+! ! black
+! *color0:  #777777
+! *color8:  #777777
+! ! red
+! *color1:  #3f0a0a
+! *color9:  #681111
+! ! green
+! *color2:  #174518
+! *color10: #3fbe43
+! ! yellow
+! *color3:  #3d2f14
+! *color11: #a27d36
+! ! blue
+! *color4:  #002d44
+! *color12: #0084cd
+! ! magenta
+! *color5:  #56146f
+! *color13: #5f349d
+! ! cyan
+! *color6:  #258F8F
+! *color14: #60C6C8
+! ! white
+! *color7:  #77858C
+! *color15: #c0c0c0
+!
+! -------------------------------------------------
+! file:     .colours/dark                           
+! author:   jason ryan - http://jasonwryan.com/    
+! vim:enc=utf-8:nu:ai:si:et:ts=4:sw=4:ft=txt:
+! -------------------------------------------------
 
-! black
-*color0:  #777777
-*color8:  #777777
-! red
-*color1:  #3f0a0a
-*color9:  #681111
-! green
-*color2:  #174518
-*color10: #3fbe43
-! yellow
-*color3:  #3d2f14
-*color11: #a27d36
-! blue
-*color4:  #002d44
-*color12: #0084cd
-! magenta
-*color5:  #56146f
-*color13: #5f349d
-! cyan
-*color6:  #258F8F
-*color14: #60C6C8
-! white
-*color7:  #77858C
-*color15: #c0c0c0
+!! jwr dark
+!black
+ *color0:  #333333
+ *color8:  #3D3D3D
+!red
+ *color1:  #8C4665
+ *color9:  #BF4D80
+!green
+ *color2:  #287373
+ *color10: #53A6A6
+!yellow
+ *color3:  #7E5D7A
+ *color11: #A270A3
+!blue
+ *color4:  #395573
+ *color12: #477AB3
+!magenta
+ *color5:  #5E468C
+ *color13: #7E62B3
+!cyan
+ *color6:  #31658C
+ *color14: #6096BF
+!white
+ *color7:  #899CA1
+ *color15: #C0C0C0
